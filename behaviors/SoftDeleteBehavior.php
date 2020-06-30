@@ -27,7 +27,7 @@ class SoftDeleteBehavior extends Behavior
     }
 
     /**
-     * soft delete behavior
+     * soft delete
      * @param Event $event
      */
     public function softDelete($event)
@@ -36,16 +36,16 @@ class SoftDeleteBehavior extends Behavior
         $this->owner->setAttribute($this->deletedAtAttribute, time());
         $this->owner->save(false);
         
-        // set soft delete 
+        // reject delete
         $event->isValid = false;
     }
 
     /**
-     * force delete 
+     * force delete
      */
     public function forceDelete()
     {
-        // detach behavoir
+        // detach behavior
         $this->detach();
         // force delete
         $this->owner->delete();

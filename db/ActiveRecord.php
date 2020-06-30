@@ -7,7 +7,7 @@ use yii\behaviors\TimestampBehavior;
 use xiang\behaviors\SoftDeleteBehavior;
 
 /**
- * base active record
+ * AR base controller
  */
 class ActiveRecord extends \yii\db\ActiveRecord
 {
@@ -22,7 +22,7 @@ class ActiveRecord extends \yii\db\ActiveRecord
             ],
         ];
 
-        // set soft delete switch and set feild
+        // if have deleted_at
         if (SOFT_DELETE_SWITCH && isset(static::getTableSchema()->columns['deleted_at'])) {
             $behaviors['softDelete'] = [
                 'class' => SoftDeleteBehavior::className()
@@ -41,7 +41,7 @@ class ActiveRecord extends \yii\db\ActiveRecord
     }
 
     /**
-     * not found exception
+     * throw exception
      * @param $condition
      * @return null|static
      * @throws NotFoundException
@@ -52,7 +52,7 @@ class ActiveRecord extends \yii\db\ActiveRecord
             return $model;
         }
 
-        throw new NotFoundException('not found the model');
+        throw new NotFoundException('not found model');
     }
 
     /**

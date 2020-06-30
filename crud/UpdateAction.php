@@ -29,7 +29,7 @@ class UpdateAction extends Action
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            
+
             if ($this->redirect) {
                 $redirect = $this->redirect;
             } else {

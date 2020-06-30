@@ -6,7 +6,7 @@ use Yii;
 use yii\base\InvalidConfigException;
 
 /**
- * main controller
+ * CRUD
  *
  */
 class Controller extends \yii\web\Controller
